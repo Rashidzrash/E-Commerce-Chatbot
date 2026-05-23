@@ -20,7 +20,7 @@ def genarate_talk(query):
             }
         ],
         temperature=2,
-        max_completion_tokens=1024,
+        max_completion_tokens=100,
     )
     return completion.choices[0].message.content
 if __name__=='__main__':
