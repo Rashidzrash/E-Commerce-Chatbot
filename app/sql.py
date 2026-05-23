@@ -26,7 +26,7 @@ def generate_sql_query(question):
             }
         ],
         temperature=0.2,
-        max_completion_tokens=1024,
+        max_completion_tokens=120,
     )
     return sql_completion.choices[0].message.content
 
@@ -67,7 +67,7 @@ def genarate_answer(query):
             }
         ],
         temperature=0.2,
-        max_completion_tokens=1024,
+        max_completion_tokens=120,
     )
     return completion.choices[0].message.content
 if __name__ == '__main__':
