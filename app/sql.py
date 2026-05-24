@@ -5,9 +5,11 @@ import dotenv
 import os
 from prompt import sql_prompt,comprehension_prompt
 import re
+from pathlib import Path
 
 
 
+db_path = Path(__file__).parent / "db.sqlite"
 dotenv.load_dotenv()
 sql_groq=Groq()
 
@@ -45,7 +47,7 @@ def final_sqlquery(query):
 def run_query(query):
     sql_query=final_sqlquery(query)
     if sql_query.strip().upper().startswith('SELECT'):
-        with sqlite3.connect('db.sqlite') as conn:
+        with sqlite3.connect(db_path) as conn:
             df = pd.read_sql_query(sql_query, conn)
             context = df.head(15).to_dict(orient='records')
             return context
